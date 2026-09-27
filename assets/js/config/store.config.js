@@ -13,7 +13,7 @@ export default {
     phone: "۰۲۱-۹۱۰۰۱۲۳۴",
     email: "support@iris-fashion.ir",
     telegram: "",
-    instagram: "@rar.shop",
+    instagram: "@ghulbazar",
     whatsapp: "",
   },
 
@@ -454,7 +454,7 @@ export default {
 
       support: "پشتیبانی ۷ روز هفته",
 
-      social: "@rar.shop",
+      social: "@ghulbazar",
 
       copyright: "© {year} ghulbazar — تمام حقوق محفوظ است",
 

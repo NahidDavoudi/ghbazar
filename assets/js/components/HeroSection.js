@@ -26,40 +26,57 @@ const HeroSection = {
 
     if (!images.length) return '';
 
-    const slidesHtml = images.map((src) => `
-      <div class="swiper-slide">
-        <div class="relative w-full aspect-[4/5] sm:aspect-[16/9] md:aspect-[21/9] min-h-[320px] sm:min-h-[420px] md:min-h-[560px]">
-          <img src="${src}" alt="${storeConfig.name}"
-               class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
-        </div>
-      </div>`).join('');
+    const logo = storeConfig.logo || 'assets/images/logo.png';
+    const title = hero.title || 'Ghul Bazar';
+    const subtitle = hero.subtitle || 'مرجع اصلی خرید و فروش اکسسوری‌های سورئال و قدمت‌دار';
+    const cta1 = hero.ctaPrimary || 'کاوش مجموعه';
+    const cta2 = hero.ctaSecondary || 'دسته‌بندی‌ها';
 
-    const overlayHtml = `
-      <div class="absolute bottom-8 md:bottom-12 left-0 right-0 z-10 px-4 md:px-6 pointer-events-none">
-        <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row items-stretch md:items-end justify-between gap-6">
-          <div class="text-right min-w-0">
-            <h1 class="font-display text-3xl sm:text-4xl md:text-6xl text-white mb-2 leading-none drop-shadow-lg" dir="ltr">${hero.title}</h1>
-            ${hero.subtitle ? `<p class="text-white/75 text-sm md:text-base max-w-sm">${hero.subtitle}</p>` : ''}
-          </div>
-          <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto pointer-events-auto">
-            ${Button.render({ variant: 'aluminum', label: hero.ctaPrimary, href: '#/shop', size: 'lg', className: 'w-full sm:w-auto justify-center' })}
-            ${Button.render({ variant: 'glass', label: hero.ctaSecondary, href: '#/categories', size: 'lg', className: 'w-full sm:w-auto justify-center text-white !border-white/30' })}
-          </div>
+    // centered overlay reused — matches landing.html exactly
+    const centeredOverlay = `
+      <div class="relative z-10 text-center px-5 max-w-3xl mx-auto py-20">
+        <img src="${logo}" alt="${storeConfig.name || 'غول بازار'}" class="w-28 h-28 md:w-40 md:h-40 object-contain mx-auto mb-4 drop-shadow-[0_0_24px_rgba(207,23,54,0.6)]" />
+        <h1 class="font-display text-5xl md:text-7xl text-white mb-3 leading-tight" dir="ltr">${title}</h1>
+        <p class="text-[#c8939c] text-base md:text-xl mb-8">${subtitle}</p>
+        <div class="flex gap-3 justify-center flex-wrap">
+          <a href="#/shop" data-link class="px-6 py-3 md:px-8 md:py-4 rounded-lg bg-[#cf1736] text-white text-sm md:text-base font-bold shadow-[0_10px_15px_-3px_rgba(207,23,54,0.3)] hover:bg-[#e01d3f] transition-all">${cta1}</a>
+          <a href="#/categories" data-link class="px-6 py-3 md:px-8 md:py-4 rounded-lg backdrop-blur-sm bg-[#2d161a]/50 border border-white/20 text-white text-sm md:text-base font-medium hover:bg-[#3a1f24] transition-all">${cta2}</a>
         </div>
       </div>`;
 
-    return `
-      <section class="hero-fullbleed hero-slider relative w-full overflow-hidden bg-body">
-        <div class="swiper hero-swiper relative">
-          <div class="swiper-wrapper">${slidesHtml}</div>
-          ${images.length > 1 ? `
-            <div class="swiper-button-prev hero-swiper-prev"></div>
-            <div class="swiper-button-next hero-swiper-next"></div>
+    // multi-slide: swiper with centered overlay per slide (keeps landing look + slider)
+    if (images.length > 1) {
+      const slidesHtml = images.map((src) => `
+        <div class="swiper-slide">
+          <div class="relative min-h-[500px] md:min-h-[700px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+              <img src="${src}" alt="${storeConfig.name}" class="w-full h-full object-cover scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#221114] via-[#221114]/60 to-transparent"></div>
+              <div class="absolute inset-0 bg-black/40"></div>
+            </div>
+            ${centeredOverlay}
+          </div>
+        </div>`).join('');
+      return `
+        <section class="hero-slider relative w-full overflow-hidden bg-body">
+          <div class="swiper hero-swiper relative">
+            <div class="swiper-wrapper">${slidesHtml}</div>
+            <div class="swiper-button-prev hero-swiper-prev !text-white"></div>
+            <div class="swiper-button-next hero-swiper-next !text-white"></div>
             <div class="swiper-pagination hero-swiper-pagination"></div>
-          ` : ''}
-          ${overlayHtml}
+          </div>
+        </section>`;
+    }
+
+    // single image: exact landing markup (no swiper chrome)
+    return `
+      <section class="relative min-h-[500px] md:min-h-[700px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+          <img src="${images[0]}" alt="${storeConfig.name || 'غول بازار'}" class="w-full h-full object-cover scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#221114] via-[#221114]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-black/40"></div>
         </div>
+        ${centeredOverlay}
       </section>`;
   },
 

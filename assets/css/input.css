@@ -602,3 +602,125 @@ div[data-page].active {
 .shop-price-input::placeholder {
     color: color-mix(in oklab, var(--color-muted) 60%, transparent);
 }
+
+/* ── Global shell (moved verbatim from index.html <style>, Phase 1) ──
+   Kept unlayered so it wins ties exactly as the old post-output.css
+   <style> block did. Do not add component styles here. */
+body {
+    font-family: var(--font-vazir);
+    background-color: var(--color-dark);
+    color: var(--color-body-text);
+}
+
+.tab-active {
+    border-bottom: 2px solid var(--color-accent);
+    color: var(--color-body-text);
+}
+
+.tab-inactive {
+    border-bottom: 2px solid transparent;
+    color: var(--color-muted);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-dark-2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+}
+
+.badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+[data-page].active {
+    animation: fadeIn 0.2s ease;
+}
+
+/* سایدبار موبایل فروشگاه */
+#shop-sidebar-wrap .shop-sidebar {
+    display: none;
+}
+
+#shop-sidebar-wrap.sidebar-open .shop-sidebar {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 60px 24px 24px;
+    background-color: var(--color-dark);
+}
+
+@media (min-width: 768px) {
+    #shop-sidebar-wrap .shop-sidebar {
+        display: block;
+        position: sticky;
+        top: 6rem;
+    }
+
+    #shop-sidebar-wrap.sidebar-open .shop-sidebar {
+        position: sticky;
+        inset: auto;
+        width: auto;
+        height: auto;
+        padding: 0;
+        overflow: visible;
+    }
+}
+
+#sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 49;
+    backdrop-filter: blur(2px);
+}
+
+#sidebar-backdrop.open {
+    display: block;
+}
+
+/* ── Semantic content container (Phase 1) ──
+   Canonical main page/content container. Mirrors the long-standing
+   `max-w-[1280px] mx-auto px-4 md:px-6` pattern (no container token
+   exists in design-tokens.css yet). Apply only where the element is
+   actually a main content container; keep extra classes (e.g. py-*)
+   on the element itself. */
+.content-container {
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+    .content-container {
+        padding-inline: 1.5rem;
+    }
+}

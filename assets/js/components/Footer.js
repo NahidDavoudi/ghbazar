@@ -11,6 +11,11 @@ const Footer = {
     const legalLinks = storeConfig.texts.legal?.footerLinks || [];
     const logoSrc = pickVariantSet(storeConfig.logoVariants, 'thumb') || storeConfig.logo;
     const enamad = footer.enamad;
+    // Phase 1: render Enamad from storeConfig (source of truth), same markup
+    // shape as admin settings preview. Renders nothing when unconfigured.
+    const enamadHtml = enamad?.href && enamad?.logoUrl
+      ? `<a referrerpolicy='origin' target='_blank' href='${escapeAttr(enamad.href)}'><img referrerpolicy='origin' src='${escapeAttr(enamad.logoUrl)}' alt='' style='cursor:pointer'${enamad.code ? ` code='${escapeAttr(enamad.code)}'` : ''}></a>`
+      : '';
 
     return `
       <footer class="border-t border-border bg-body mt-20">
@@ -45,7 +50,7 @@ const Footer = {
           </div>
           <div class="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted/60">
             <p>${formatCopyright(footer.copyright)}</p>
-            <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=764322&Code=Z5BDiXK67OX1jcMPpMLpQg9Ex1y59Fod'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=764322&Code=Z5BDiXK67OX1jcMPpMLpQg9Ex1y59Fod' alt='' style='cursor:pointer' code='Z5BDiXK67OX1jcMPpMLpQg9Ex1y59Fod'></a>
+            ${enamadHtml}
           </div>
         </div>
       </footer>`;

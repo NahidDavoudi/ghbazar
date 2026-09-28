@@ -1,5 +1,5 @@
-/* Design Tokens - Auto-generated */
-/* Do not edit directly - modify tokens.json instead */
+/* Design Tokens — single source of truth for primitives, semantic & component tokens */
+/* Edit this file directly; no separate tokens.json is used in this project. */
 
 /* === PRIMITIVES === */
 :root {
@@ -51,117 +51,82 @@
   --primitive-spacing-16: 4rem;
   --primitive-spacing-20: 5rem;
   --primitive-spacing-24: 6rem;
-  --primitive-fontSize-2xs: 0.625rem;
-  --primitive-fontSize-xs: 0.75rem;
-  --primitive-fontSize-sm: 0.875rem;
-  --primitive-fontSize-base: 1rem;
-  --primitive-fontSize-lg: 1.125rem;
-  --primitive-fontSize-xl: 1.25rem;
-  --primitive-fontSize-2xl: 1.5rem;
-  --primitive-fontSize-3xl: 1.875rem;
-  --primitive-fontSize-4xl: 2.25rem;
-  --primitive-fontSize-5xl: 3rem;
-  --primitive-fontSize-6xl: 3.75rem;
-  --primitive-fontSize-7xl: 4.5rem;
-  --primitive-fontFamily-body: 'Vazirmatn', sans-serif;
-  --primitive-fontFamily-display: 'Agbalumo', cursive;
-  --primitive-fontFamily-mono: ui-monospace, monospace;
-  --primitive-fontWeight-regular: 400;
-  --primitive-fontWeight-medium: 500;
-  --primitive-fontWeight-semibold: 600;
-  --primitive-fontWeight-bold: 700;
-  --primitive-fontWeight-black: 900;
   --primitive-radius-sm: 0.5rem;
   --primitive-radius-md: 0.75rem;
   --primitive-radius-lg: 1rem;
   --primitive-radius-xl: 1.125rem;
   --primitive-radius-2xl: 1.75rem;
   --primitive-radius-full: 9999px;
-  --primitive-shadow-clay: 0 6px 18px rgba(0,0,0,0.55), 0 14px 36px rgba(0,0,0,0.38);
-  --primitive-shadow-clay-hover: 0 20px 48px rgba(0,0,0,0.65), 0 0 0 1.5px rgba(207,23,54,0.3), 0 0 28px rgba(207,23,54,0.1);
-  --primitive-shadow-clay-active: 0 22px 55px rgba(0,0,0,0.65), 0 0 35px rgba(207,23,54,0.22), inset 0 1px 0 rgba(255,255,255,0.09);
-  --primitive-shadow-cta: 0 10px 15px -3px rgba(207,23,54,0.3);
-  --primitive-shadow-cta-lg: 0 10px 20px -5px rgba(207,23,54,0.4);
-  --primitive-shadow-logo-glow: 0 0 24px rgba(207,23,54,0.6);
-  --primitive-duration-fast: 150ms;
-  --primitive-duration-normal: 200ms;
-  --primitive-duration-slow: 300ms;
-  --primitive-duration-clay: 320ms;
-  --primitive-blur-sm: 8px;
-  --primitive-blur-md: 12px;
+  --primitive-shadow-clay: 0 16px 48px rgba(220, 38, 38, 0.14);
+  --primitive-shadow-clay-hover: 0 24px 64px rgba(220, 38, 38, 0.18);
+  --primitive-shadow-clay-active: 0 8px 24px rgba(220, 38, 38, 0.2);
+  --primitive-shadow-cta: 0 4px 12px rgba(220, 38, 38, 0.25);
+  --primitive-shadow-logo-glow: 0 0 24px rgba(207, 23, 54, 0.6);
 }
 
-/* === SEMANTIC === */
+/* === SEMANTIC (alias primitives) === */
 :root {
-  --color-background: #221114;
-  --color-background-subtle: #2d161a;
-  --color-background-muted: #3a1f24;
-  --color-background-deep: #1a0c0f;
-  --color-foreground: #ffffff;
-  --color-foreground-muted: rgba(255,255,255,0.6);
-  --color-foreground-faint: rgba(255,255,255,0.45);
-  --color-primary: #cf1736;
-  --color-primary-hover: #e01d3f;
-  --color-primary-soft: #e11d48;
-  --color-muted: #c8939c;
-  --color-muted-strong: #b07880;
-  --color-border: #47242a;
-  --color-border-soft: rgba(255,255,255,0.10);
-  --color-success: #4ade80;
-  --color-success-bg: rgba(20,83,45,0.3);
-  --color-ring: #cf1736;
-  --spacing-section: 3rem;
-  --spacing-component: 1.5rem;
-  --spacing-card-gap: 1.5rem;
-  --spacing-card-gap-sm: 0.75rem;
-  --typography-body: 'Vazirmatn', sans-serif;
-  --typography-display: 'Agbalumo', cursive;
+  --color-primary: var(--primitive-color-crimson-500);
+  --color-primary-hover: var(--primitive-color-crimson-600);
+  --color-primary-soft: var(--primitive-color-crimson-400);
+  --color-background: var(--primitive-color-wine-900);
+  --color-background-subtle: var(--primitive-color-wine-800);
+  --color-background-muted: var(--primitive-color-wine-700);
+  --color-background-deep: var(--primitive-color-wine-965);
+  --color-foreground: var(--primitive-color-white);
+  --color-foreground-muted: rgba(255, 255, 255, 0.6);
+  --color-foreground-faint: rgba(255, 255, 255, 0.45);
+  --color-muted: var(--primitive-color-wine-300);
+  --color-muted-strong: var(--primitive-color-wine-400);
+  --color-border: var(--primitive-color-wine-600);
+  --color-border-soft: rgba(255, 255, 255, 0.1);
+  --color-success: var(--primitive-color-green-400);
+  --color-success-bg: rgba(20, 83, 45, 0.3);
+  --color-ring: var(--primitive-color-crimson-500);
+  --typography-body: "Vazirmatn", sans-serif;
+  --typography-display: "Agbalumo", cursive;
+  --typography-felipa: "Felipa", sans-serif;
+  --spacing-section: var(--primitive-spacing-12);
+  --spacing-component: var(--primitive-spacing-6);
+  --spacing-card-gap: var(--primitive-spacing-6);
+  --radius-sm: var(--primitive-radius-sm);
+  --radius-md: var(--primitive-radius-md);
+  --radius-lg: var(--primitive-radius-lg);
+  --radius-xl: var(--primitive-radius-xl);
+  --radius-2xl: var(--primitive-radius-2xl);
+  --radius-full: var(--primitive-radius-full);
+  --shadow-clay: var(--primitive-shadow-clay);
+  --shadow-clay-hover: var(--primitive-shadow-clay-hover);
+  --shadow-clay-active: var(--primitive-shadow-clay-active);
+  --shadow-cta: var(--primitive-shadow-cta);
+  --shadow-logo-glow: var(--primitive-shadow-logo-glow);
 }
 
-/* === COMPONENTS === */
+/* === COMPONENT TOKENS === */
 :root {
-  --button-primary-bg: #cf1736;
-  --button-primary-bg-hover: #e01d3f;
-  --button-primary-fg: #ffffff;
-  --button-secondary-bg: rgba(45,22,26,0.5);
-  --button-secondary-border: rgba(255,255,255,0.2);
-  --button-secondary-fg: #ffffff;
-  --button-radius: 0.75rem;
-  --button-radius-lg: 1rem;
-  --button-shadow: 0 10px 15px -3px rgba(207,23,54,0.3);
-  --button-padding-x: 1.5rem;
-  --button-padding-y: 0.75rem;
-  --card-bg: #120508;
-  --card-radius: 1.125rem;
-  --card-aspect: 3 / 4;
-  --card-shadow: 0 6px 18px rgba(0,0,0,0.55), 0 14px 36px rgba(0,0,0,0.38);
-  --card-shadow-hover: 0 20px 48px rgba(0,0,0,0.65), 0 0 0 1.5px rgba(207,23,54,0.3), 0 0 28px rgba(207,23,54,0.1);
-  --card-overlay: linear-gradient(to top, rgba(10,3,6,0.97) 0%, rgba(18,7,11,0.88) 28%, rgba(30,12,17,0.5) 52%, rgba(30,12,17,0.1) 72%, transparent 100%);
-  --card-padding: 0 12px 12px;
-  --card-era-size: 0.625rem;
-  --card-name-size: 13px;
-  --card-price-size: 0.75rem;
-  --cart-pill-bg: rgba(255,255,255,0.10);
-  --cart-pill-border: rgba(255,255,255,0.18);
-  --cart-pill-fg: rgba(255,255,255,0.75);
-  --cart-pill-radius: 9999px;
-  --cart-pill-blur: 8px;
-  --cart-pill-padding: 5px 10px 5px 8px;
-  --input-bg: #2d161a;
-  --input-bg-deep: #221114;
-  --input-border: #47242a;
-  --input-focus-border: #cf1736;
-  --input-placeholder: rgba(200,147,156,0.5);
-  --input-radius: 0.5rem;
-  --input-padding: 0.75rem 1rem;
-  --banner-bg: linear-gradient(to bottom right, #241014, #12070a);
-  --banner-radius: 1.75rem;
-  --banner-border: rgba(255,255,255,0.10);
-  --banner-blob-primary: rgba(207,23,54,0.10);
-  --badge-radius: 9999px;
-  --badge-padding: 0.2rem 0.7rem;
-  --badge-size: 0.7rem;
-  --swiper-nav-bg: rgba(45,22,26,0.80);
-  --swiper-nav-border: #47242a;
-  --swiper-slide-width: min(268px, 74vw);
+  --card-radius: var(--radius-2xl);
+  --card-bg: var(--color-background-muted);
+  --card-border: var(--color-border);
+  --card-shadow-hover: var(--shadow-clay);
+  --btn-radius: var(--radius-full);
+  --btn-sm-padding: 0.4rem 1rem;
+  --btn-sm-font: 0.75rem;
+  --btn-md-padding: 0.625rem 1.5rem;
+  --btn-md-font: 0.875rem;
+  --btn-lg-padding: 0.875rem 2rem;
+  --btn-lg-font: 1rem;
+  --btn-icon-size: 2.25rem;
+  --nav-size: 2.5rem;
+  --nav-radius: var(--radius-full);
+  --curve-card-w: 300px;
+  --curve-card-h: 420px;
+  --curve-transition-ms: 2400ms;
+  --curve-radius: 24px;
+  --curve-angle-step: 18;
+  --curve-arrow-size: 44px;
+  --curve-arrow-gap: 12px;
+  --curve-arrow-inset: 32px;
+  --promo-aspect: 21/9;
+  --hero-min-h: 500px;
+  --hero-min-h-md: 700px;
 }

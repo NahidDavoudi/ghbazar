@@ -15,7 +15,7 @@ const ROUTES = [
   { path: '/cart', page: 'cart', script: 'cart', title: () => `سبد خرید | ${storeConfig.name}` },
   { path: '/checkout', page: 'checkout', script: 'checkout', title: () => `تکمیل سفارش | ${storeConfig.name}` },
   { path: '/payment', page: 'payment', script: 'payment', title: () => `پرداخت | ${storeConfig.name}` },
-  { path: '/payment/result', page: 'payment_result', script: 'payment-result', title: () => `نتیجه پرداخت | ${storeConfig.name}` },
+  { path: '/payment/result', page: 'payment-result', script: 'payment-result', title: () => `نتیجه پرداخت | ${storeConfig.name}` },
   { path: '/orders', page: 'orders', script: 'orders', title: () => `سفارشات | ${storeConfig.name}`, meta: () => '' },
   { path: '/profile', page: 'profile', script: 'profile', title: () => `پروفایل | ${storeConfig.name}`, meta: () => '' },
   { path: '/about', page: 'about', script: 'about', title: () => `درباره ما | ${storeConfig.name}`, meta: () => storeConfig.texts.legal?.about?.meta || '' },

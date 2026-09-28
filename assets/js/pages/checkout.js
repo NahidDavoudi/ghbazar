@@ -47,7 +47,7 @@ function _renderCheckoutSummary() {
         : '';
       return `
       <div class="flex items-center gap-3">
-        <div class="w-14 h-14 rounded-lg shrink-0 overflow-hidden bg-[#f5f5f7] relative">
+        <div class="w-14 h-14 rounded-lg shrink-0 overflow-hidden bg-background-muted relative">
           ${renderImageWithFallback({ src: item.image || '', alt: item.name, iconSize: 'w-6 h-6' })}
         </div>
         <div class="flex-1 text-right min-w-0">

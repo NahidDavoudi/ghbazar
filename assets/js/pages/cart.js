@@ -37,7 +37,7 @@ function _renderCart(data) {
         : '';
       return `
       <div class="bg-card border border-border rounded-xl p-4 flex gap-4 items-center" id="ci-${item.variant_id || item.product_id}">
-        <div class="w-20 h-20 rounded-lg shrink-0 overflow-hidden bg-[#f5f5f7] relative">
+        <div class="w-20 h-20 rounded-lg shrink-0 overflow-hidden bg-background-muted relative">
           ${renderImageWithFallback({ src: item.image || '', alt: item.name, iconSize: 'w-8 h-8' })}
         </div>
         <div class="flex-1 text-right min-w-0">

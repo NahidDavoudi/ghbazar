@@ -24,6 +24,15 @@
 .bg-surface {
     background-color: var(--color-dark-2);
 }
+.bg-background-subtle {
+    background-color: var(--color-background-subtle);
+}
+.bg-background-muted {
+    background-color: var(--color-background-muted);
+}
+.bg-background-deep {
+    background-color: var(--color-background-deep);
+}
 .bg-card {
     background-color: var(--color-dark-3);
 }
@@ -45,6 +54,9 @@
 .border-border {
     border-color: var(--color-border);
 }
+.border-border-soft {
+    border-color: var(--color-border-soft);
+}
 .border-accent {
     border-color: var(--color-accent);
 }
@@ -53,6 +65,9 @@
 }
 .hover\:bg-accent-hover:hover {
     background-color: var(--color-accent-hover);
+}
+.hover\:bg-background-muted:hover {
+    background-color: var(--color-background-muted);
 }
 .hover\:text-accent:hover {
     color: var(--color-accent);

@@ -40,7 +40,7 @@ const HeroSection = {
         <p class="text-muted text-base md:text-xl mb-8">${subtitle}</p>
         <div class="flex gap-3 justify-center flex-wrap">
           <a href="#/shop" data-link class="px-6 py-3 md:px-8 md:py-4 rounded-lg bg-accent text-white text-sm md:text-base font-bold shadow-[0_10px_15px_-3px_rgba(207,23,54,0.3)] hover:bg-accent-hover transition-all">${cta1}</a>
-          <a href="#/categories" data-link class="px-6 py-3 md:px-8 md:py-4 rounded-lg backdrop-blur-sm bg-[#2d161a]/50 border border-white/20 text-white text-sm md:text-base font-medium hover:bg-[#3a1f24] transition-all">${cta2}</a>
+          <a href="#/categories" data-link class="px-6 py-3 md:px-8 md:py-4 rounded-lg backdrop-blur-sm bg-background-subtle/50 border border-white/20 text-white text-sm md:text-base font-medium hover:bg-background-muted transition-all">${cta2}</a>
         </div>
       </div>`;
 
@@ -51,7 +51,7 @@ const HeroSection = {
           <div class="relative min-h-[500px] md:min-h-[700px] flex items-center justify-center overflow-hidden">
             <div class="absolute inset-0">
               <img src="${src}" alt="${storeConfig.name}" class="w-full h-full object-cover scale-105" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#221114] via-[#221114]/60 to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-body via-body/60 to-transparent"></div>
               <div class="absolute inset-0 bg-black/40"></div>
             </div>
             ${centeredOverlay}
@@ -73,7 +73,7 @@ const HeroSection = {
       <section class="relative min-h-[500px] md:min-h-[700px] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
           <img src="${images[0]}" alt="${storeConfig.name || 'غول بازار'}" class="w-full h-full object-cover scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#221114] via-[#221114]/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-body via-body/60 to-transparent"></div>
           <div class="absolute inset-0 bg-black/40"></div>
         </div>
         ${centeredOverlay}

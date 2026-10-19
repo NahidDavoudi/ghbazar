@@ -1,50 +1,55 @@
-import { storeConfig } from '../config/bootstrap.js';
 import { formatPrice } from '../utils/priceFormatter.js';
 import { renderImageWithFallback } from '../utils/imagePlaceholder.js';
 import { pickProductImage } from '../utils/imageUrl.js';
-import { renderProductCardOverlay } from '../utils/productCardOverlay.js';
 import { isLowStock, formatLowStockMessage } from '../utils/stockHint.js';
 import DOM from '../utils/dom.js';
-import Button from './Button.js';
 
 const ProductCard = {
   render(p) {
-    const ui = storeConfig.ui;
     const img = pickProductImage(p, 'medium');
     const price = formatPrice(p.price);
     const href = DOM.hashHref('product', { id: p.id });
 
-    const lowStockText = isLowStock(p.stock) ? formatLowStockMessage(p.stock) : '';
-    const outOfStock = p.stock === 0
-      ? `<div class="absolute inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center z-10"><span class="text-sm text-white/80 font-medium">ناموجود</span></div>`
+    const badge = p.badge
+      ? `<span class="clay-badge">${p.badge}</span>`
       : '';
 
-    const addBtn = Button.render({
-      variant: 'aluminum',
-      size: 'icon',
-      label: '+',
-      className: 'add-to-cart-quick shrink-0 !shadow-none',
-      attrs: { 'data-product-id': p.id, title: 'افزودن به سبد' },
-      disabled: p.stock === 0,
-    });
+    const lowStock = isLowStock(p.stock)
+      ? `<span class="clay-low-stock">${formatLowStockMessage(p.stock)}</span>`
+      : '';
+
+    const outOfStock = p.stock === 0
+      ? `<div class="clay-out-of-stock"><span>ناموجود</span></div>`
+      : '';
+
+    const category = p.era || p.category_name || '';
 
     return `
-      <a href="${href}" data-link
-         class="group block iris-card ${ui.cardBase} ${ui.cardRadius} ${ui.cardHover}">
-        <div class="relative ${ui.productCardAspect} overflow-hidden bg-surface">
-          ${outOfStock}
-          ${renderImageWithFallback({
-            src: img,
-            alt: p.name,
-            imgClass: 'w-full h-full object-fill group-hover:scale-[1.04] transition-transform duration-700 ease-out',
-          })}
-          ${renderProductCardOverlay({
-            name: p.name,
-            category: p.category_name || '',
-            price,
-            addBtnHtml: addBtn,
-            lowStockText,
-          })}
+      <a href="${href}" data-link class="clay-card">
+        ${outOfStock}${badge}${lowStock}
+        ${renderImageWithFallback({
+          src: img,
+          alt: p.name,
+          imgClass: 'card-img',
+        })}
+        <div class="card-overlay"></div>
+        <div class="card-body">
+          ${category ? `<span class="card-era">${category}</span>` : ''}
+          <p class="card-name">${p.name}</p>
+          <div class="card-footer">
+            <button
+              class="add-to-cart-quick cart-pill"
+              data-product-id="${p.id}"
+              title="افزودن به سبد"
+              ${p.stock === 0 ? 'disabled' : ''}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              افزودن
+            </button>
+            <span class="card-price">${price}</span>
+          </div>
         </div>
       </a>`;
   },
@@ -57,12 +62,10 @@ const ProductCard = {
         if (btn.disabled || btn.getAttribute('aria-disabled') === 'true') return;
         const id = btn.dataset.productId;
         if (!id) return;
-        const orig = btn.querySelector('.btn-inner')?.textContent || btn.textContent;
+        const orig = btn.innerHTML;
         btn.disabled = true;
         btn.setAttribute('aria-disabled', 'true');
-        const inner = btn.querySelector('.btn-inner');
-        if (inner) inner.textContent = '✓';
-        else btn.textContent = '✓';
+        btn.innerHTML = '✓';
         btn.classList.add('is-success');
         try {
           await callbacks.onAddToCart?.(id);
@@ -70,8 +73,7 @@ const ProductCard = {
         setTimeout(() => {
           btn.disabled = false;
           btn.removeAttribute('aria-disabled');
-          if (inner) inner.textContent = orig;
-          else btn.textContent = orig;
+          btn.innerHTML = orig;
           btn.classList.remove('is-success');
         }, 1800);
       });

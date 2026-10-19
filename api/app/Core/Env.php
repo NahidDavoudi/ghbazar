@@ -28,7 +28,14 @@ class Env
     }
     public static function get(string $key, mixed $default = null): mixed
     {
-        return $_ENV[$key] ?? getenv($key) ?? $default;
+        $value = $_ENV[$key] ?? getenv($key);
+
+        // اگر مقدار false، null یا رشته‌ی خالی برگشت → پیش‌فرض
+        if ($value === false || $value === null || $value === '') {
+            return $default;
+        }
+
+        return $value;
     }
 
     /** @throws \RuntimeException در محیط production اگر تنظیمات حیاتی ناامن باشد */

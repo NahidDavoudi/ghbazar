@@ -1,6 +1,7 @@
 <?php
 namespace App\Core\Database;
 
+use App\Core\Env;
 use \PDO;
 use \PDOException;
 
@@ -11,14 +12,20 @@ class Database
 
     public function __construct()
     {
+        $host    = (string) Env::get('DB_HOST', 'localhost');
+        $name    = (string) Env::get('DB_NAME', 'shop');
+        $user    = (string) Env::get('DB_USER', 'root');
+        $pass    = (string) Env::get('DB_PASS', '');
+        $charset = (string) Env::get('DB_CHARSET', 'utf8mb4');
+
         $this->pdo = new PDO(
-            "mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']};charset=utf8mb4",
-            $_ENV['DB_USER'],
-            $_ENV['DB_PASS'],
+            "mysql:host={$host};dbname={$name};charset={$charset}",
+            $user,
+            $pass,
             [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_EMULATE_PREPARES   => false,
             ]
         );
     }
@@ -30,7 +37,7 @@ class Database
         }
         return self::$instance;
     }
-    
+
     public function getConnection(): PDO
     {
         return $this->pdo;
@@ -45,6 +52,6 @@ class Database
 
     public function lastInsertId(): int
     {
-        return (int)$this->pdo->lastInsertId();
+        return (int) $this->pdo->lastInsertId();
     }
 }

@@ -161,4 +161,8 @@ class Request {
     public function query(string $key, mixed $default = null): mixed {
         return $_GET[$key] ?? $default;
     }
+    public function ip(): string
+    {
+        return $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    }
 }

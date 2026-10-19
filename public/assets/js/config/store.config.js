@@ -1601,6 +1601,6 @@ export default {
   },
 
   api: {
-    baseUrl: "api/v1",
+    baseUrl: "https://api.nadstore.ir/api/v1",
   },
 };

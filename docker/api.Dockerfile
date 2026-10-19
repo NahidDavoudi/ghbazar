@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && a2enmod rewrite headers remoteip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     libmagickwand-dev \
     && pecl install imagick \
     && docker-php-ext-enable imagick \

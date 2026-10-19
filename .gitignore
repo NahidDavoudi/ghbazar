@@ -2,3 +2,5 @@
 .env
 node_modules/
 assets/css/output.css
+uploads/*
+!uploads/.gitkeep

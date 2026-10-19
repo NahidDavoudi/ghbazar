@@ -3,6 +3,5 @@ api/.env
 api/vendor/*
 api/app/storage/logs
 node_modules/
-assets/css/output.css
-uploads/*
-!uploads/.gitkeep
+public/uploads/*
+!public/uploads/.gitkeep

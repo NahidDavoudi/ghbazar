@@ -1,6 +1,5 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /rarshop/api/
 
     # فایل‌ها و دایرکتوری‌های واقعی رو دست نزن
     RewriteCond %{REQUEST_FILENAME} !-f

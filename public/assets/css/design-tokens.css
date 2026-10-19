@@ -84,7 +84,7 @@
   --color-success-bg: rgba(20, 83, 45, 0.3);
   --color-ring: var(--primitive-color-crimson-500);
   --typography-body: "Vazirmatn", sans-serif;
-  --typography-display: "Agbalumo", cursive;
+  --typography-display: "Vazirmatn", sans-serif;
   --typography-felipa: "Felipa", sans-serif;
   --spacing-section: var(--primitive-spacing-12);
   --spacing-component: var(--primitive-spacing-6);

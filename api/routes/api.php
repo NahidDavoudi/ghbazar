@@ -18,6 +18,7 @@ use App\Modules\PromoBanner\PromoBannerController;
 use App\Modules\HeroSlide\HeroSlideController;
 use App\Modules\Size\SizeController;
 use App\Modules\Payment\PaymentController;
+use App\Modules\Search\SearchController;
 
 $router->group([
     'middleware' => [LogMiddleware::class],
@@ -61,6 +62,9 @@ $router->group([
         
     $router->get('/api/v1/payment/callback', [PaymentController::class, 'callback']);
     $router->post('/api/v1/payment/callback', [PaymentController::class, 'callback']);
+
+    // Search 
+    $router->get('/api/v1/search?q={query}', [SearchController::class, 'index']);
     // ═══════════════════════════════════════════════════════════════════════
     // نیاز به توکن
     // ═══════════════════════════════════════════════════════════════════════

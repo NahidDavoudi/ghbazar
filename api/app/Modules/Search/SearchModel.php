@@ -28,7 +28,7 @@ class SearchModel
             return [];
         }
 
-        $compactExpr = "REPLACE(REPLACE(name, ' ', ''), '\u{200C}', '')";
+        $compactExpr = "REPLACE(REPLACE(p.name, ' ', ''), '\u{200C}', '')";
         $conditions  = [];
         $params      = [];
 

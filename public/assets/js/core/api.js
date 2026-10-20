@@ -402,7 +402,12 @@ const products = {
   deleteAxisValue: (id, axisId, valueId) => del(`/admin/products/${id}/axes/${axisId}/values/${valueId}`),
   mergeAxisValues: (id, axisId, keepId, loseId) => post(`/admin/products/${id}/axes/${axisId}/merge`, { keep_value_id: keepId, lose_value_id: loseId }),
 };
-
+const search = {
+  query: (q, limit = 10, opts = {}) => withFallback(
+    get('/search', { q, limit }, opts),
+    { query: q, normalized_query: q, tokens: [], total: 0, items: [], took_ms: 0, cached: false },
+  ),
+};
 const categories = {
   list: () => withFallback(get('/categories'), CFG().fallback?.categories ?? []),
   get: (id) => get(`/categories/${id}`),
@@ -524,6 +529,7 @@ const api = {
   settings,
   users,
   products,
+  search,
   categories,
   cart,
   orders,

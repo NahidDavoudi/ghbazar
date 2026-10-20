@@ -33,7 +33,9 @@ const Header = {
           </a>
           <nav class="hidden md:flex items-center gap-1">${navItems}</nav>
           <div class="flex items-center gap-2">
-            <button class="hidden md:flex w-9 h-9 items-center justify-center rounded-full hover:bg-accent/10 transition-colors" title="جستجو">
+            <button id="header-search-btn"
+                class="flex w-9 h-9 items-center justify-center rounded-full hover:bg-accent/10 transition-colors"
+                title="جستجو" aria-label="جستجو">
               <i data-lucide="search" class="w-[18px] h-[18px] text-muted"></i>
             </button>
             <a href="#/cart" data-link class="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-accent/10 transition-colors group">
@@ -62,6 +64,10 @@ const Header = {
 
     container.querySelector('#header-logout-btn')?.addEventListener('click', async () => {
       await callbacks.onLogout?.();
+    });
+
+    container.querySelector('#header-search-btn')?.addEventListener('click', () => {
+      callbacks.onOpenSearch?.();
     });
   },
 };

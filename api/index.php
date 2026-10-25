@@ -14,6 +14,7 @@ use App\Core\Http\RequestContext;
 $allowedOrigins = [
     'https://iris.nadstore.ir',
     'https://www.iris.nadstore.ir',
+    'https://ghulbazar.test/',
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';

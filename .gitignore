@@ -5,3 +5,4 @@ api/app/storage/logs
 node_modules/
 public/uploads/*
 !public/uploads/.gitkeep
+merged/

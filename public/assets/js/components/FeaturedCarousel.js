@@ -13,7 +13,6 @@ function nextId() {
 const FeaturedCarousel = {
   render(data = {}) {
     const cfg = storeConfig.carousel.featured;
-    const curveCfg = cfg.curve || {};
     const { home } = storeConfig.texts;
     const products = data.products || [];
     const id = data.id || nextId();
@@ -27,8 +26,8 @@ const FeaturedCarousel = {
         <div class="max-w-[1280px] mx-auto relative">
           ${SectionHeader.render({
             title,
-            viewAllHref,
-            viewAllLabel,
+            href: viewAllHref,
+            label: viewAllLabel,
             titleClass: 'text-2xl md:text-4xl font-bold text-body text-right',
             linkClass: 'text-muted text-xs md:text-sm hover:text-accent flex flex-row-reverse items-center gap-1 transition-colors shrink-0'
           })}

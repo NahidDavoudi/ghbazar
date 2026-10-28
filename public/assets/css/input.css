@@ -145,6 +145,150 @@ div[data-page].active {
     }
 }
 
+/* ── Apple Liquid Glass Header (Floating Island / 3D Raised Capsule) ── */
+.header-floating-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding: 0.75rem 0.875rem 0.25rem;
+    background: transparent !important;
+    border: none !important;
+    pointer-events: none;
+}
+
+@media (min-width: 768px) {
+    .header-floating-wrap {
+        padding: 1rem 1.5rem 0.35rem;
+    }
+}
+
+.header-liquid-glass {
+    position: relative;
+    pointer-events: auto;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.04) 42%,
+            rgba(18, 5, 8, 0.28) 100%),
+        color-mix(in oklab, var(--color-dark) 68%, transparent);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 12px 24px -12px rgba(255, 255, 255, 0.14),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -10px 20px -10px rgba(0, 0, 0, 0.45),
+        0 16px 40px -8px rgba(0, 0, 0, 0.65),
+        0 6px 18px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(0, 0, 0, 0.25);
+    transition:
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+/* Subtle diagonal glass reflection sheen */
+.header-liquid-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(110deg,
+            transparent 15%,
+            rgba(255, 255, 255, 0.065) 36%,
+            rgba(255, 255, 255, 0.015) 50%,
+            transparent 70%);
+}
+
+.header-logo-orb {
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, 0.13) 0%,
+            rgba(255, 255, 255, 0.03) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+        0 4px 12px rgba(0, 0, 0, 0.3);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.header-brand:hover .header-logo-orb {
+    border-color: color-mix(in oklab, var(--color-accent) 45%, rgba(255, 255, 255, 0.25));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.32),
+        0 6px 16px rgba(0, 0, 0, 0.4),
+        0 0 16px color-mix(in oklab, var(--color-accent) 22%, transparent);
+}
+
+/* Inner Apple-style glass dock capsule for nav links */
+.header-nav-capsule {
+    background: rgba(12, 4, 7, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.45),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.07),
+        0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.header-nav-link {
+    position: relative;
+}
+
+.header-nav-link:hover:not(.is-active) {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-body-text);
+}
+
+/* Raised 3D glass pill for the active navigation item */
+.header-nav-link.is-active {
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.16) 0%,
+            rgba(255, 255, 255, 0.06) 100%);
+    color: #ffffff;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.32),
+        0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Raised 3D circular glass buttons (Search, Cart, User) */
+.header-glass-icon,
+.header-user-pill {
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0.04) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.26),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+        0 4px 12px rgba(0, 0, 0, 0.28),
+        0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.header-glass-icon:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(255, 255, 255, 0.07) 100%);
+    border-color: rgba(255, 255, 255, 0.24);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+        0 6px 16px rgba(0, 0, 0, 0.38),
+        0 0 14px color-mix(in oklab, var(--color-accent) 18%, transparent);
+}
+
+.header-glass-icon:active {
+    transform: translateY(0) scale(0.95);
+}
+
 /* ── Accent Button (primary CTA — red on dark theme) ── */
 .btn-accent {
     position: relative;
@@ -393,7 +537,7 @@ div[data-page].active {
     transform: scale(1.05);
 }
 
-/* ── Featured Curve Carousel (Framer-style 3D) ── */
+/* ── Featured 3D Depth-Blur Carousel (Framer Depth-Blur Style) ── */
 .featured-carousel-section {
     overflow-x: clip;
     position: relative;
@@ -404,7 +548,7 @@ div[data-page].active {
 .curve-carousel {
     position: relative;
     width: 100%;
-    min-height: 320px;
+    min-height: 360px;
     overflow: visible;
 }
 
@@ -414,6 +558,7 @@ div[data-page].active {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -424,9 +569,12 @@ div[data-page].active {
     display: flex;
     align-items: center;
     justify-content: center;
+    perspective: var(--curve-perspective, 1200px);
+    perspective-origin: 50% 50%;
     cursor: grab;
     touch-action: pan-y;
     user-select: none;
+    -webkit-user-select: none;
     overflow: visible;
 }
 
@@ -438,6 +586,7 @@ div[data-page].active {
     position: relative;
     width: 100%;
     height: 100%;
+    transform-style: preserve-3d;
     overflow: visible;
 }
 
@@ -448,64 +597,129 @@ div[data-page].active {
     display: inline-flex;
     width: fit-content;
     height: fit-content;
-    transform-origin: center;
-    transition:
-        transform var(--curve-transition-ms, 2400ms) cubic-bezier(0.22, 1, 0.36, 1),
-        opacity var(--curve-transition-ms, 2400ms) cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     will-change: transform, opacity;
-}
-
-.curve-carousel__stage.is-dragging .curve-carousel__card {
-    transition-duration: calc(var(--curve-transition-ms, 2400ms) * 0.85);
 }
 
 .curve-carousel__card-inner {
     display: inline-flex;
-    transition: filter var(--curve-transition-ms, 2400ms) cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: var(--curve-card-radius, 20px);
     will-change: filter;
 }
 
 .featured-poster-curve {
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-    border: 1px solid var(--color-border);
+    position: relative;
+    box-shadow:
+        0 22px 52px rgba(0, 0, 0, 0.58),
+        0 6px 18px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition:
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.curve-carousel__arrows {
+.curve-carousel__card.is-center .featured-poster-curve {
+    border-color: color-mix(in oklab, var(--color-accent) 45%, rgba(255, 255, 255, 0.22));
+    box-shadow:
+        0 28px 68px rgba(0, 0, 0, 0.72),
+        0 0 36px color-mix(in oklab, var(--color-accent) 18%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.featured-poster__shine {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.14) 0%,
+            rgba(255, 255, 255, 0.02) 38%,
+            transparent 60%);
+    z-index: 1;
+}
+
+/* Cinematic Frosted Edge Blur Overlays */
+.curve-carousel__edge-blur {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(44px, 11vw, 150px);
+    z-index: 95;
+    pointer-events: none;
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+
+.curve-carousel__edge-blur--left {
+    left: -8px;
+    background: linear-gradient(to right, color-mix(in oklab, var(--color-dark) 75%, transparent), transparent);
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 100%);
+}
+
+.curve-carousel__edge-blur--right {
+    right: -8px;
+    background: linear-gradient(to left, color-mix(in oklab, var(--color-dark) 75%, transparent), transparent);
+    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 0) 100%);
+}
+
+.curve-carousel__controls {
     position: absolute;
     left: 50%;
-    bottom: var(--curve-arrow-inset, 32px);
+    bottom: var(--curve-arrow-inset, 24px);
     transform: translateX(-50%);
+    z-index: 110;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--curve-arrow-gap, 12px);
-    z-index: 12;
+}
+
+.curve-carousel__arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--curve-arrow-gap, 14px);
+    padding: 6px 10px;
+    border-radius: 9999px;
+    background: color-mix(in oklab, var(--color-dark-3) 75%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.38);
 }
 
 .curve-carousel__arrow {
-    width: var(--curve-arrow-size, 44px);
-    height: var(--curve-arrow-size, 44px);
+    width: var(--curve-arrow-size, 42px);
+    height: var(--curve-arrow-size, 42px);
     border-radius: 9999px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--color-border);
-    background: var(--color-dark-3);
+    background: var(--color-dark-2);
     color: var(--color-body-text);
     cursor: pointer;
     transition:
-        transform 300ms,
-        background-color 300ms,
-        color 300ms,
-        border-color 300ms;
+        transform 220ms ease,
+        background-color 220ms ease,
+        color 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
 }
 
 .curve-carousel__arrow:hover:not(:disabled) {
-    transform: scale(1.05);
-    border-color: color-mix(in oklab,
-            var(--color-accent) 40%,
-            var(--color-border));
-    color: var(--color-accent);
+    transform: scale(1.07);
+    border-color: color-mix(in oklab, var(--color-accent) 55%, var(--color-border));
+    background: color-mix(in oklab, var(--color-accent) 18%, var(--color-dark-2));
+    color: #fff;
+    box-shadow: 0 0 16px color-mix(in oklab, var(--color-accent) 30%, transparent);
+}
+
+.curve-carousel__arrow:active:not(:disabled) {
+    transform: scale(0.95);
 }
 
 .curve-carousel__arrow:disabled {
@@ -513,21 +727,50 @@ div[data-page].active {
     cursor: default;
 }
 
+.curve-carousel__dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-inline: 4px;
+}
+
+.curve-carousel__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.22);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition:
+        width 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 260ms ease;
+}
+
+.curve-carousel__dot:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.curve-carousel__dot.is-active {
+    width: 22px;
+    background: var(--color-accent);
+}
+
 .curve-carousel__fade {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 224px;
+    height: 180px;
     pointer-events: none;
     z-index: 0;
     -webkit-mask-image: linear-gradient(to top,
             rgba(0, 0, 0, 1),
-            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0));
     mask-image: linear-gradient(to top,
             rgba(0, 0, 0, 1),
-            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.7),
             rgba(0, 0, 0, 0));
 }
 

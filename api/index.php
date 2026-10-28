@@ -12,10 +12,8 @@ use App\Core\Http\RequestContext;
 // ─── CORS ────────────────────────────────────
 // باید قبل از هر خروجی و هر چیز دیگه‌ای باشه، تا روی خطاها هم اعمال بشه
 $allowedOrigins = [
-    'https://iris.nadstore.ir',
-    'https://www.iris.nadstore.ir',
-    'https://ghulbazar.test/',
-    'https://ghulbazar.ir/',    
+    'https://ghulbazar.test',
+    'https://ghulbazar.ir',    
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';

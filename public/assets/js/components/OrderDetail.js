@@ -7,6 +7,7 @@ const PAYMENT_LABELS = {
   cash: 'کارت به کارت',
   card: 'کارت بانکی',
   transfer: 'انتقال بانکی',
+  card_to_card: 'کارت به کارت',   // ← اضافه شود
 };
 
 function _formatPrice(amount) {

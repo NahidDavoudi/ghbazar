@@ -328,10 +328,11 @@ async function _submitOrder() {
       customer_name: name,
       customer_phone: phone,
       shipping_address: fullAddress,
-      payment_method: 'card',
+      payment_method: 'card_to_card',   // ← قبلاً: 'card'
       items,
       ...(discountCode ? { discount_code: discountCode } : {}),
     });
+
 
     await api.cart.clear();
     window.loadCartCount?.();

@@ -13,18 +13,23 @@ class PaymentTransactionModel extends Model
         'gateway',
         'ref_id',
         'tracking_code',
+        'receipt_path',
+        'receipt_file_name',
         'amount',
         'status',
     ];
 
-    public function createPending(int $orderId, string $refId, float $amount): int
+    public function createPending(int $orderId, string $gateway, string $refId, float $amount): int
     {
         return $this->create([
-            'order_id' => $orderId,
-            'gateway'  => 'bitpay',
-            'ref_id'   => $refId,
-            'amount'   => $amount,
-            'status'   => 'pending',
+            'order_id'        => $orderId,
+            'gateway'         => $gateway,
+            'ref_id'          => $refId,
+            'tracking_code'   => null,
+            'receipt_path'    => null,
+            'receipt_file_name' => null,
+            'amount'          => $amount,
+            'status'          => 'pending',
         ]);
     }
 
@@ -33,11 +38,25 @@ class PaymentTransactionModel extends Model
         return $this->findBy('ref_id', $refId);
     }
 
+    public function findByOrderId(int $orderId): ?array
+    {
+        return $this->findBy('order_id', $orderId);
+    }
+
     public function markStatus(int $id, string $status, ?string $trackingCode = null): bool
     {
         return $this->update($id, [
             'status'        => $status,
             'tracking_code' => $trackingCode,
+        ]);
+    }
+
+    public function setReceipt(int $id, string $path, string $fileName): bool
+    {
+        return $this->update($id, [
+            'receipt_path'       => $path,
+            'receipt_file_name'  => $fileName,
+            'status'             => 'pending', // رسید Upload شده، هنوز تایید نشده
         ]);
     }
 }

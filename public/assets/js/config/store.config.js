@@ -1601,6 +1601,6 @@ export default {
   },
 
   api: {
-    baseUrl: "https://api.nadstore.ir/api/v1",
+    baseUrl: 'https://api.ghulbazar.ir/api/v1',
   },
 };

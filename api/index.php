@@ -15,6 +15,7 @@ $allowedOrigins = [
     'https://iris.nadstore.ir',
     'https://www.iris.nadstore.ir',
     'https://ghulbazar.test/',
+    'https://ghulbazar.ir/',    
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
